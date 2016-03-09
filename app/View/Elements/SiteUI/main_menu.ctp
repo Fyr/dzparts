@@ -1,13 +1,26 @@
-<ul class="nav nav-pills pull-right">
+<ul class="list-unstyled hidden-xs hidden-sm">
 <?
-	foreach($aNavBar as $id => $item) {
-		$class = (strtolower($id) == strtolower($currMenu)) ? ' class="active"' : '';
-		$url = Router::url($item['href']);
-		if (isset($item['href']['action']) && $item['href']['action'] == 'index') {
-			// $url.= '/';
+	foreach($aMenu as $id => $menu) {
+		$href = (isset($menu['submenu'])) ? 'javascript: void(0)' : $menu['href'];
+?>
+	<li class="<?=(($id == $currMenu) ? 'active' : '')?>">
+		<a href="<?=$href?>"><span><?=$menu['title']?></span> </a>
+<?
+		if (isset($menu['submenu'])) {
+?>
+		<ul class="navigation-dropdown">
+<?
+			foreach($menu['submenu'] as $i => $submenu) {
+?>
+			<li><a href="<?=$submenu['href']?>"><?=$submenu['title']?></a></li>
+<?
+			}
+?>
+		</ul>
+<?
 		}
 ?>
-	<li<?=$class?>><a href="<?=$url?>"><?=$item['label']?></a></li>
+	</li>
 <?
 	}
 ?>

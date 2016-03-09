@@ -1,12 +1,15 @@
-			
+<ul class="list-unstyled">
 <?
 	foreach($aBottomLinks as $id => $item) {
-		$options = array();
-		if (strtolower($id) == strtolower($currMenu)) {
-			$options['class'] = 'active';
-		}
+		$class = (strtolower($id) == strtolower($currLink)) ? 'active' : '';
 ?>
-				<?=$this->Html->link($item['label'], $item['href'], $options)?>
+	<li>
+		<a class="<?=$class?>" href="<?=$item['href']?>">
+			<?=$this->element('icon', array('type' => 'angle-double-left'))?>
+			<?=$item['title']?>
+		</a>
+	</li>
 <?
 	}
 ?>
+</ul>

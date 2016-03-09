@@ -31,6 +31,8 @@ class PagesController extends AppController {
 			$aArticle['Seo']['title'] = $aArticle['Page']['title'];
 		}
 		$this->seo = $aArticle['Seo'];
+		$this->currMenu = 'home';
+		$this->currLink = 'home';
 	}
 	
 	public function show($slug) {

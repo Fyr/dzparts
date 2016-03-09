@@ -23,7 +23,7 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 Configure::write('Exception.renderer', 'SiteExceptionRenderer');
-Configure::write('Config.language', 'rus');
+Configure::write('Config.language', 'eng');
 
 // define('PATH_FILES_UPLOAD', $_SERVER['DOCUMENT_ROOT'].'/files/');
 Configure::write('media', array(
@@ -47,8 +47,8 @@ Configure::write('Recaptcha.publicKey', RECAPTCHA_PUBLIC_KEY);
 Configure::write('Recaptcha.privateKey', RECAPTCHA_PRIVATE_KEY);
 
 Configure::write('domain', array(
-	'url' => 'newagro.dev',
-	'title' => 'NewAgro.dev',
+	'url' => 'deutzparts',
+	'title' => 'DEUTZparts.dev',
 	'zone' => 'by'
 ));
 
