@@ -1,4 +1,4 @@
-<!--div class="breadcrumbs">
+<div class="breadcrumbs">
 	<div class="container">
 		<ul class="list-unstyled">
 			<li>
@@ -8,7 +8,7 @@
 			<li>Spares</li>
 		</ul>
 	</div>
-</div-->
+</div>
 
 
 <section class="container">

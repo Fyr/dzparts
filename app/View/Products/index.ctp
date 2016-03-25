@@ -5,11 +5,11 @@
 		'objectType' => 'Product',
 	);
 	$title = 'Результаты поиска';
-	$aBreadCrumbs = array();
+	$breadcrumbs = array();
 	$relatedArticle = array();
 	if (isset($subcategory)) {
 		$title = $subcategory['Subcategory']['title'];
-		$aBreadCrumbs = array(
+		$breadcrumbs = array(
 			__('Home') => '/',
 			$this->ObjectType->getTitle('index', 'Product') => $indexUrl,
 			$subcategory['Category']['title'] => SiteRouter::url(array('Category' => $subcategory['Category'])),
@@ -18,7 +18,7 @@
 		$relatedArticle = $subcategory;
 	} elseif (isset($category)) {
 		$title = $category['Category']['title'];
-		$aBreadCrumbs = array(
+		$breadcrumbs = array(
 			__('Home') => '/',
 			$this->ObjectType->getTitle('index', 'Product') => $indexUrl,
 			$title => ''
@@ -26,43 +26,57 @@
 		$relatedArticle = $category;
 	} else {
 		$title = $this->ObjectType->getTitle('index', 'Product');
-		$aBreadCrumbs = array(
+		$breadcrumbs = array(
 			__('Home') => '/',
 			$this->ObjectType->getTitle('index', 'Product') => ''
 		);
 	}
-	if ($aBreadCrumbs) {
-		echo $this->element('bread_crumbs', compact('aBreadCrumbs'));
+	if ($breadcrumbs) {
+		echo $this->element('breadcrumbs', compact('breadcrumbs'));
 	}
-	echo $this->element('title', compact('title'));
+?>
+
+<div class="container container-catalog">
+	<?=$this->element('title', compact('title'))?>
+	<div class="row">
+		<div class="col-sm-9">
+<?
 	if (!$aArticles) {
 ?>
-	<div class="block main clearfix">
-		<b>Не найдено ни одного продукта</b>
-		<p>
-			Пож-ста, измените параметры поиска или нажмите
-			<a href="<?=Router::url($indexUrl)?>">сюда</a>,
-			чтобы просмотреть весь каталог продукции.
-		</p>
-	</div>
+			<section class="news">
+				<div class="container">
+					<div class="main-news">
+						<div class="main-news-description">
+							<b>Не найдено ни одного продукта</b>
+							<p>
+								Пож-ста, измените параметры поиска или нажмите
+								<a href="<?=Router::url($indexUrl)?>">сюда</a>,
+								чтобы просмотреть весь каталог продукции.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 <?
 	} else {
 ?>
-	<div class="catalogContent clearfix<?=(isset($directSearch) && $directSearch) ? ' brands' : ''?>">
+			<section>
+				<div class="row catalog-parts">
+
 <?
 		foreach($aArticles as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '130x100', $featured);
-			$title = $article['Product']['code'].' '.$article['Product']['title_rus'];
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '300x250', $featured);
+			$alt = $article['Product']['code'] . ' ' . $article['Product']['title'];
 			$brand_id = $article['Product']['brand_id'];
 			if (!$src) {
 				if (isset($aBrands[$brand_id])) {
-					$src = $this->Media->imageUrl($aBrands[$brand_id], '130x100');
+					$src = $this->Media->imageUrl($aBrands[$brand_id], '300x250');
 				}
 			}
-			
 ?>
-			<a id="product_<?=$article['Product']['id']?>" class="block" href="<?=$url?>">
-				<div class="top">
+					<div class="col-xs-6 col-sm-4">
+						<a href="#" class="catalog-parts-element">
+							<figure>
 <?
 			if ($article['Product']['brand_id'] && isset($aBrands[$brand_id])) {
 				if (isset($directSearch) && $directSearch) {
@@ -73,47 +87,43 @@
 				}
 			}
 ?>
-					<div class="title ellipsis"><?=$title?></div>
-				</div>
-				<div class="ava">
-					<span class="icon <?=($article['Product']['active']) ? 'available' : 'noAvailable'?>"></span>
-					<img src="<?=($src) ? $src : '/img/default_product100.png'?>" alt="<?=$title?>" />
-				</div>
-<?
-			$price = 0;
-			$prod_id = $article['Product']['id'];
-			if (Configure::read('domain.zone') == 'ru') {
-				if (isset($prices_ru[$prod_id])) {
-					$price = $prices_ru[$prod_id]['value'];
-				} elseif (isset($prices2_ru[$prod_id])) {
-					$price = $prices2_ru[$prod_id]['value'];
-				}
-			} else {
-				if (isset($prices_by[$prod_id])) {
-					$price = $prices_by[$prod_id]['value'];
-				}
-			}
-			if ($price) {
-				echo '<div class="price">'.$this->element('price', compact('price')).'</div>';
-			}
-?>
-			</a>
+								<img class="img-responsive" src="<?=($src) ? $src : '/img/default_product100.png'?>" alt="<?=$title?>" />
+								<figcaption>
+									<?=$article['Product']['code']?><br />
+									<?=$title?>
+								</figcaption>
+							</figure>
+						</a>
+					</div>
 <?
 		}
-?>                            
-	</div>
-<?
-		if (isset($directSearch) && $directSearch) {
-			// echo $this->element('pagination2', array('filterURL' => $aFilters['url']));
-		} else {
-			echo $this->element('paginate', array('objectType' => 'products'));
-		}
 ?>
+				</div>
+			</section>
+			<hr class="hr-section">
 
 <?
 	}
+	echo $this->element('paginate');
 
 	if ($relatedArticle) {
-		echo $this->ArticleVars->body($relatedArticle);
+?>
+			<section class="news">
+					<div class="main-news">
+						<div class="main-news-description">
+							<?=$this->ArticleVars->body($relatedArticle)?>
+						</div>
+					</div>
+			</section>
+<?
 	}
 ?>
+		</div>
+
+		<div class="col-sm-3">
+			<?=$this->element('sb_categories', array('aCategories' => $aCategories[0], 'aSubcategories' => $aSubcategories))?>
+		</div>
+	</div>
+</div>
+
+

@@ -25,6 +25,9 @@ class ArticleVarsHelper extends AppHelper {
 
 	public function divideColumns($items, $cols) {
 		$aCols = array();
+		for($i = 0; $i < $cols; $i++) {
+			$aCols[$i] = array();
+		}
 		$col = 0;
 		$count = 0;
 		$total = ceil(count($items) / $cols) ;
@@ -42,4 +45,8 @@ class ArticleVarsHelper extends AppHelper {
 		return $aCols;
 	}
 
+	public function date($date) {
+		$date = strtotime($date);
+		return '<span>'.date('m/Y', $date).' <span class="day">'.date('d', $date).'</span></span>';
+	}
 }

@@ -16,7 +16,7 @@ $(document).ready(function(){
 	$('img[align="right"]').css('margin', '10px 0px 10px 10px');
 
 	$('#tags').css('left', -1000);
-	
+	/*
     $('.menu li a').click(function(){
         $(".header .menu li ul").stop().slideUp();
         if ( $(this).next().is('ul') ) {
@@ -55,6 +55,7 @@ $(document).ready(function(){
             flag = true;
         }
     });
+
     
 	$("#partnersParade").smoothDivScroll({ 
 	    autoScrollingMode: "onStart", 
@@ -78,9 +79,9 @@ $(document).ready(function(){
 	}).bind("mouseout", function() {
 	    $(this).smoothDivScroll("startAutoScrolling");
 	});
-	
+	*/
 	// auto fancy-box for images
-	$('.block.main img').each(function(){
+	$('.main-news-description img').each(function(){
 		$(this).wrap(function(){
 			return '<a class="fancybox" href="' + this.src.replace(/\d+x\d*/g, 'noresize') + '" rel="photoalbum"></a>';
 		});

@@ -49,10 +49,12 @@ class ObjectTypeHelper extends AppHelper {
                 'Product' => __('Edit Product')
             ),
             'view' => array(
-            	'Article' => __('View Article'),
-            	'News' => __('View News article'),
+            	'Article' => __('View article'),
+                'Offer' => __('View hot offer'),
+            	'News' => __('View article'),
             	'Product' => __('View product'),
-            	'Brand' => __('View brand')
+            	'Brand' => __('View brand'),
+                'Motor' => __('View machinary'),
             )
         );
         return $Titles;

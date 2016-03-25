@@ -1,10 +1,14 @@
 <?
-	$aBreadCrumbs = array(__('Home') => '/', $aArticle['Page']['title'] => '');
-	echo $this->element('bread_crumbs', compact('aBreadCrumbs'));
-	echo $this->element('title', array('title' => $aArticle['Page']['title']));
+	$breadcrumbs = array(__('Home') => '/', $aArticle['Page']['title'] => '');
+	echo $this->element('breadcrumbs', compact('breadcrumbs'));
 ?>
-<div class="block main clearfix">
-	<div class="article">
-		<?=$this->ArticleVars->body($aArticle)?>
+<section class="news">
+	<div class="container">
+		<?= $this->element('title', array('title' => $aArticle['Page']['title'])) ?>
+		<div class="main-news">
+			<div class="main-news-description">
+				<?=$this->ArticleVars->body($aArticle)?>
+			</div>
+		</div>
 	</div>
-</div>
+</section>

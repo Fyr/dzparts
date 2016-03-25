@@ -13,3 +13,30 @@ img.grayscale {
 	filter: gray; /* IE6-9 */
 	-webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
 }
+
+.catalog-parts-element figure {
+	text-align: center;
+}
+
+.main-news-title small {
+	position: relative;
+	top: 15px;
+}
+
+.clear {
+	clear: both;
+	height: 1px;
+}
+
+.dealer-info {
+	font-size: 0.9em;
+	margin-bottom: 7px;
+	margin-left: 20px;
+}
+.dealer-info span {
+	font-weight: bold;
+}
+.container-catalog .catalog-parts-element figure figcaption {
+	font-size: 16px;
+	padding: 10px 0;
+}

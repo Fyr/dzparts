@@ -1,37 +1,33 @@
 <?
 	$title = $this->ObjectType->getTitle('index', $objectType);
-	echo $this->element('bread_crumbs', array('aBreadCrumbs' => array(
-		__('Home') => '/',
+	$breadcrumbs = array(
+		'Home' => '/',
 		$title => ''
-	)));
+	);
+	echo $this->element('breadcrumbs', compact('breadcrumbs'));
+?>
+<section class="news">
+	<div class="container">
+<?
 	echo $this->element('title', compact('title'));
-	foreach($aArticles as $article) {
-		if ($objectType == 'Dealer') {
-			echo $this->element('/Article/index_Dealer', compact('article'));
-		} else {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '150x', $featured, $id);
+	$aCols = $this->ArticleVars->divideColumns($aArticles, 2);
 ?>
-                        <div class="block clearfix">
+		<div class="row">
+			<div class="col-sm-6">
 <?
-			if ($src) {
-?>
-                            <a href="<?=$url?>"><img src="<?=$src?>" alt="<?=$title?>" class="thumb"/></a>
-<?
-			}
-			if ($objectType == 'News' || $objectType == 'Offer') {
-?>
-                            <div class="time"><span class="icon clock"></span><?=$this->PHTime->niceShort($article[$objectType]['created'])?></div>
-<?
-			}
-?>
-                            <a href="<?=$url?>" class="title"><?=$title?></a>
-                            <div class="description"><?=$teaser?></div>
-                            <div class="more">
-                                <?=$this->element('more', compact('url'))?>
-                            </div>
-                        </div>
-<?
-		}
+	foreach($aCols[0] as $article) {
+		echo $this->element('article', compact('article'));
 	}
 ?>
-<?=$this->element('paginate')?>
+			</div>
+			<div class="col-sm-6">
+<?
+	foreach($aCols[1] as $article) {
+		echo $this->element('article', compact('article'));
+	}
+?>
+			</div>
+		</div>
+		<?=$this->element('paginate')?>
+	</div>
+</section>

@@ -21,17 +21,23 @@
 			$this->ObjectType->getTitle('view', $objectType) => ''
 		);
 	}
-	echo $this->element('bread_crumbs', array('aBreadCrumbs' => $breadcrumbs));
-	echo $this->element('title', array('title' => $article[$objectType]['title']));
+	echo $this->element('breadcrumbs', array('breadcrumbs' => $breadcrumbs));
 	if ($objectType == 'Dealer') {
 		echo $this->element('/Article/view_Dealer', compact('article'));
 	} else {
 ?>
-<div class="block main clearfix">
-	<div class="article">
-		<?=$this->ArticleVars->body($article)?>
+
+<section class="news">
+	<div class="container">
+		<?= $this->element('title', array('title' => $article[$objectType]['title'])) ?>
+		<div class="main-news">
+			<div class="main-news-description">
+				<?= $this->ArticleVars->body($article) ?>
+			</div>
+		</div>
 	</div>
-</div>
+</section>
+
 <?
 	}
 ?>

@@ -55,29 +55,29 @@ class AppController extends Controller {
 	
 	protected function beforeFilterLayout() {
 		$this->aNavBar = array(
-			'home' => array('href' => '/', 'title' => __('Home')),
-			'news' => array('href' => '/news', 'title' => __('News')),
-			'products' => array('href' => '/zapchasti', 'title' => __('Spares')),
-			'remont' => array('href' => '/remont', 'title' => __('Repair')),
-			'offer' => array('href' => '/offers', 'title' => __('Hot Offers')),
-			'brand' => array('href' => '/brand', 'title' => __('Brands')),
-			'motor' => array('href' => '/motors', 'title' => __('Machinery')),
-			'about-us' => array('href' => '/pages/show/about-us', 'title' => ''),
-			'dealer' => array('href' => '/magazini-zapchastei', 'title' => ''),
-			'contacts' => array('href' => '/contacts', 'title' => __('Contacts'))
+			'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
+			'news' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'News'), 'title' => __('News')),
+			'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
+			'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),
+			'offer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Offer'), 'title' => __('Hot Offers')),
+			'brand' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Brand'), 'title' => __('Brands')),
+			'motor' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Motor'), 'title' => __('Machinery')),
+			'about-us' => array('href' => array('controller' => 'pages', 'action' => 'show', 'about-us'), 'title' => ''),
+			'dealer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Dealer'), 'title' => ''),
+			'contacts' => array('href' => array('controller' => 'contacts', 'action' => 'index'), 'title' => __('Contacts'))
 		);
 
 		$this->aBottomLinks = array(
-			'home' => array('href' => '/', 'title' => __('Home')),
-			'news' => array('href' => '/news', 'title' => __('News')),
-			'products' => array('href' => '/zapchasti', 'title' => __('Spares')),
-			'remont' => array('href' => '/remont', 'title' => __('Repair')),
-			'offer' => array('href' => '/offers', 'title' => __('Hot Offers')),
-			'brand' => array('href' => '/brand', 'title' => __('Brands')),
-			// 'motor' => array('href' => '/motors', 'title' => __('Machinery')),
-			'about-us' => array('href' => '/pages/show/about-us', 'title' => ''),
-			'dealer' => array('href' => '/magazini-zapchastei', 'title' => ''),
-			'contacts' => array('href' => '/contacts', 'title' => __('Contacts'))
+			'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
+			'news' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'News'), 'title' => __('News')),
+			'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
+			'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),
+			'offer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Offer'), 'title' => __('Hot Offers')),
+			'brand' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Brand'), 'title' => __('Brands')),
+			// 'motor' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Motor'), 'title' => __('Machinery')),
+			'about-us' => array('href' => array('controller' => 'pages', 'action' => 'show', 'about-us'), 'title' => ''),
+			'dealer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Dealer'), 'title' => ''),
+			'contacts' => array('href' => array('controller' => 'contacts', 'action' => 'index'), 'title' => __('Contacts'))
 		);
 
 		
@@ -114,7 +114,7 @@ class AppController extends Controller {
 		*/
 		return $curr_menu;
 	}
-	
+
 	public function beforeRender() {
 		$this->set('aNavBar', $this->aNavBar);
 		$this->set('currMenu', $this->currMenu);

@@ -1,18 +1,22 @@
 <?
-	$this->ArticleVars->init($article, $url, $title, $teaser, $src, '150x', $featured, $id);
+    $this->ArticleVars->init($article, $url, $title, $teaser, $src, '200x');
 ?>
-                        <div class="block clearfix">
+<section class="news">
+    <div class="main-news">
+        <div class="main-news-title">
+            <?=$this->Html->link($title, $url)?>
+        </div>
+        <div class="main-news-description">
 <?
-	if ($src) {
+    if ($src) {
 ?>
-                            <a href="<?=$url?>"><img src="<?=$src?>" alt="<?=$title?>" class="thumb"/></a>
+            <img src="<?=$src?>" alt="<?=$title?>" style="float: right; margin: 0 0 10px 10px" />
 <?
-	}
+    }
 ?>
-                            <a href="<?=$url?>" class="title"><?=$title?></a>
-                            <?=$this->element('dealer_details', compact('article'))?>
-                            <div class="description"><?=$teaser?></div>
-                            <div class="more">
-                                <?=$this->element('more', compact('url'))?>
-                            </div>
-                        </div>
+            <?=$this->element('dealer_details', array('article' => $article))?>
+            <div class="clear"></div>
+            <?=$teaser?>
+        </div>
+    </div>
+</section>
