@@ -55,7 +55,7 @@ class AppController extends Controller {
 	
 	protected function beforeFilterLayout() {
 		$this->aNavBar = array(
-			'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
+			// 'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
 			'news' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'News'), 'title' => __('News')),
 			'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
 			'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),

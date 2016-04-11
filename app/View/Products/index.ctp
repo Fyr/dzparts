@@ -75,14 +75,17 @@
 			}
 ?>
 					<div class="col-xs-6 col-sm-4">
-						<a href="#" class="catalog-parts-element">
+						<a href="<?=$url?>" class="catalog-parts-element">
 							<figure>
 <?
 			if ($article['Product']['brand_id'] && isset($aBrands[$brand_id])) {
 				if (isset($directSearch) && $directSearch) {
-					$catTitle = $article['Category']['title'].' &gt; '.$article['Subcategory']['title']; // $brands[$article['Product']['brand_id']]['Brand']['title']
 ?>
-					<div class="brand"><small><?=$catTitle?></small></div>
+								<small class="brand">
+									<?=$article['Category']['title']?>
+									<?=$this->element('icon', array('type' => 'angle-right'))?>
+									<?=$article['Subcategory']['title']?>
+								</small>
 <?
 				}
 			}
@@ -121,7 +124,7 @@
 		</div>
 
 		<div class="col-sm-3">
-			<?=$this->element('sb_categories', array('aCategories' => $aCategories[0], 'aSubcategories' => $aSubcategories))?>
+			<?=$this->element('sb_categories')?>
 		</div>
 	</div>
 </div>

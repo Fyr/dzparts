@@ -21,9 +21,6 @@ class RouterController extends AppController {
 		if ($type == 'product') {
 			$zone = Configure::read('domain.zone');
 			$fname = str_replace('.'.$aFName['ext'], '_'.$zone.'.'.$aFName['ext'], $fname);
-			if (TEST_ENV) {
-				$zone = 'by';
-			}
 		}
 		
 		if (file_exists($fname)) {

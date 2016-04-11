@@ -32,16 +32,6 @@
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
-
-    if (isset($cat_autoOpen)) {
-?>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#cat-nav<?=$cat_autoOpen?> > a').click();
-    });
-</script>
-<?
-    }
 ?>
 </head>
 
@@ -63,9 +53,9 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-sm-5">
-                            <form class="header-search hidden-sm" action="#">
+                            <form class="header-search hidden-sm" action="<?=Router::url(array('controller' => 'products', 'action' => 'index'))?>" method="get">
                                 <label for="headerSearch" class="sr-only"></label>
-                                <input type="text" class="form-control" id="headerSearch" placeholder="Enter spere number or its name...">
+                                <input type="text" class="form-control" id="headerSearch" name="q" value="<?=$this->request->query('q')?>" placeholder="Enter spere number or its name...">
                                 <button type="submit">
                                     <?=$this->element('icon', array('type' => 'search'))?>
                                 </button>
@@ -151,7 +141,7 @@
     $aCols = $this->Articlevars->divideColumns($aBottomLinks, 2);
 ?>
                         <div class="col-xs-6 col-sm-3">
-                            <?=$this->element('SiteUI/bottom_links', array('aBottomLinks' => $aCols[0], 'currLink' => 'home'))?>
+                            <?=$this->element('SiteUI/bottom_links', array('aBottomLinks' => $aCols[0], 'currLink' => $currLink))?>
                         </div>
                         <div class="col-xs-6 col-sm-3">
                             <?=$this->element('SiteUI/bottom_links', array('aBottomLinks' => $aCols[1], 'currLink' => $currLink))?>

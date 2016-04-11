@@ -49,7 +49,7 @@ Configure::write('Recaptcha.privateKey', RECAPTCHA_PRIVATE_KEY);
 Configure::write('domain', array(
 	'url' => 'deutzparts',
 	'title' => 'DEUTZparts.dev',
-	'zone' => 'by'
+	'zone' => 'bg'
 ));
 
 Configure::write('search', array(

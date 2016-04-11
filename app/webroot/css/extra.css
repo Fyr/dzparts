@@ -40,3 +40,28 @@ img.grayscale {
 	font-size: 16px;
 	padding: 10px 0;
 }
+.panel-collapse .panel-body .active { font-weight: bold;}
+
+small.brand {color: #000}
+
+/*
+.grid > thead > tr > th, .grid .th {
+	background: #303030;
+	color: #fff;
+}
+*/
+.grid th {
+	background: #303030;
+	color: #fff;
+	font-weight: normal;
+	text-align: center;
+	padding: 10px 5px;
+	border-right: 1px solid #fff;
+}
+.grid td {
+	padding: 5px 10px;
+}
+.grid .odd td {
+	background: #eee;
+	border-right: 1px solid #fff;
+}
