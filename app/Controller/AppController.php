@@ -71,12 +71,12 @@ class AppController extends Controller {
 			'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
 			'news' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'News'), 'title' => __('News')),
 			'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
-			'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),
-			'offer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Offer'), 'title' => __('Hot Offers')),
-			'brand' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Brand'), 'title' => __('Brands')),
+			// 'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),
+			// 'offer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Offer'), 'title' => __('Hot Offers')),
+			// 'brand' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Brand'), 'title' => __('Brands')),
 			// 'motor' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Motor'), 'title' => __('Machinery')),
 			'about-us' => array('href' => array('controller' => 'pages', 'action' => 'show', 'about-us'), 'title' => ''),
-			'dealer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Dealer'), 'title' => ''),
+			// 'dealer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Dealer'), 'title' => ''),
 			'contacts' => array('href' => array('controller' => 'contacts', 'action' => 'index'), 'title' => __('Contacts'))
 		);
 

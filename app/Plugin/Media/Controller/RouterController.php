@@ -41,7 +41,7 @@ class RouterController extends AppController {
 				$origImg = $thumb;
 			}
 		}
-		
+
 		$image->load($origImg);
 		if ($aSize) {
 			$method = $this->PHMedia->getResizeMethod($size);
@@ -52,7 +52,6 @@ class RouterController extends AppController {
 
 			$logo = new Image();
 			$logo->load('./img/logo_'.$zone.'.gif');
-
 			// т.к. есть баг с ресайзом лого (при ресайзе исчезает прозрачность и появляется фон),
 			// то ресайзим саму картинку, а потом возвращаем ее в исх. размер или ресайзим в нужный
 			$oldSizeX = $image->getSizeX();
@@ -60,7 +59,7 @@ class RouterController extends AppController {
 			$lRestoreSize = false;
 			if ($aSize) {
 				if ($logo->getSizeX() > $image->getSizeX()) {
-					$image->{$method}($logo->getSizeX(), null);
+					$image->resize($logo->getSizeX(), null);
 					$lRestoreSize = true;
 				}
 			} elseif ($image->getSizeX() > 400) {
@@ -72,7 +71,7 @@ class RouterController extends AppController {
 			imagesavealpha($image->getImage(), true);
 			imagecopymerge($image->getImage(), $logo->getImage(), $x, $y, 0, 0, $logo->getSizeX(), $logo->getSizeY(), 40);
 			if ($lRestoreSize) {
-				$image->{$method}($oldSizeX, null);
+				$image->resize($oldSizeX, null);
 			}
 		}
 

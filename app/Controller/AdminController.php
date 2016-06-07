@@ -16,15 +16,15 @@ class AdminController extends AppController {
 			'Content' => array('label' => __('Content'), 'href' => '', 'submenu' => array(
 				array('label' => __('Static pages'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'Page')),
 				array('label' => __('News'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'News')),
-				array('label' => __('Offers'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'Offer')),
-				array('label' => __('Motors'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'Motor')),
-				array('label' => __('Articles'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'SiteArticle')),
+				// array('label' => __('Offers'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'Offer')),
+				// array('label' => __('Motors'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'Motor')),
+				// array('label' => __('Articles'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'SiteArticle')),
 			)),
 			'SectionArticle' => array('label' => __('Sectionizer'), 'href' => '', 'submenu' => array()),
-			'RepairArticle' => array('label' => __('Repair'), 'href' => array('controller' => 'AdminRepair', 'action' => 'index')),
-			'Dealers' => array('label' => __('Dealers'), 'href' => array('controller' => 'AdminDealers', 'action' => 'index')),
-			'Banners' => array('label' => __('Banners'), 'href' => array('controller' => 'AdminBanners', 'action' => 'index')),
-			'Catalogs' => array('label' => __('Catalogs'), 'href' => array('controller' => 'AdminCatalogs', 'action' => 'index')),
+			// 'RepairArticle' => array('label' => __('Repair'), 'href' => array('controller' => 'AdminRepair', 'action' => 'index')),
+			// 'Dealers' => array('label' => __('Dealers'), 'href' => array('controller' => 'AdminDealers', 'action' => 'index')),
+			// 'Banners' => array('label' => __('Banners'), 'href' => array('controller' => 'AdminBanners', 'action' => 'index')),
+			// 'Catalogs' => array('label' => __('Catalogs'), 'href' => array('controller' => 'AdminCatalogs', 'action' => 'index')),
 			/*
 			'Catalogs' => array('label' => __('Catalogs'), 'href' => '', 'submenu' => array(
 				array('label' => __('Categories'), 'href' => array('controller' => 'AdminContent', 'action' => 'index', 'CategoryProduct')),

@@ -89,8 +89,14 @@
 <?
 				}
 			}
+
+			$style = '';
+			if (!$src) {
+				$src = '/img/default_product100.png';
+				$style = 'style="height: 250px"';
+			}
 ?>
-								<img class="img-responsive" src="<?=($src) ? $src : '/img/default_product100.png'?>" alt="<?=$title?>" />
+								<img class="img-responsive" src="<?=$src?>" alt="<?=$title?>" <?=$style?>/>
 								<figcaption>
 									<?=$article['Product']['code']?><br />
 									<?=$title?>

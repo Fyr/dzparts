@@ -186,7 +186,7 @@ class Image
 		
 		$iDestX = $iSourceX * $fAspect;
 		$iDestY = $iSourceY * $fAspect;
-		
+		fdebug(compact('iNewSizeX', 'iNewSizeY'));
 		$rImage = imagecreatetruecolor($iNewSizeX, $iNewSizeY);
 		imagecopyresampled($rImage, $this->getImage(), ($iNewSizeX - $iDestX) / 2, ($iNewSizeY - $iDestY) / 2, 0, 0, $iDestX, $iDestY, $iSourceX, $iSourceY);
 		$this->setImage($rImage);
