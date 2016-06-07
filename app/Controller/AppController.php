@@ -55,15 +55,15 @@ class AppController extends Controller {
 	
 	protected function beforeFilterLayout() {
 		$this->aNavBar = array(
-			// 'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
+			'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
 			'news' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'News'), 'title' => __('News')),
 			'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
-			'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),
-			'offer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Offer'), 'title' => __('Hot Offers')),
-			'brand' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Brand'), 'title' => __('Brands')),
-			'motor' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Motor'), 'title' => __('Machinery')),
+			// 'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),
+			// 'offer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Offer'), 'title' => __('Hot Offers')),
+			// 'brand' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Brand'), 'title' => __('Brands')),
+			// 'motor' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Motor'), 'title' => __('Machinery')),
 			'about-us' => array('href' => array('controller' => 'pages', 'action' => 'show', 'about-us'), 'title' => ''),
-			'dealer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Dealer'), 'title' => ''),
+			// 'dealer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Dealer'), 'title' => ''),
 			'contacts' => array('href' => array('controller' => 'contacts', 'action' => 'index'), 'title' => __('Contacts'))
 		);
 
@@ -216,8 +216,10 @@ class AppController extends Controller {
 		));
 		$this->aNavBar['about-us']['title'] = $aArticleTitles['about-us'];
 		$this->aBottomLinks['about-us']['title'] = $aArticleTitles['about-us'];
+		/*
 		$this->aNavBar['dealer']['title'] = $aArticleTitles['magazini-zapchastei'];
 		$this->aBottomLinks['dealer']['title'] = $aArticleTitles['magazini-zapchastei'];
+		*/
 		$this->set('aBottomLinks', $this->aBottomLinks);
 		
 		if (Configure::read('domain.zone') == 'by') {

@@ -10,6 +10,7 @@
 	<div class="container">
 <?
 	echo $this->element('title', compact('title'));
+	if ($aArticles) {
 	$aCols = $this->ArticleVars->divideColumns($aArticles, 2);
 ?>
 		<div class="row">
@@ -29,5 +30,14 @@
 			</div>
 		</div>
 		<?=$this->element('paginate')?>
+<?
+	} else {
+?>
+		<div class="row" style="padding: 30px 0;">
+			<?=__('No articles in this section')?>
+		</div>
+<?
+	}
+?>
 	</div>
 </section>

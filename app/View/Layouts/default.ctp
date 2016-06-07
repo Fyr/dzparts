@@ -40,9 +40,6 @@
 <div class="wrapper">
 
     <header class="header">
-        <div class="container">
-            <div class="header-banner">BANNER IMAGE</div>
-        </div>
         <div class="container header-navbar">
             <div class="row">
                 <div class="col-sm-3">
@@ -98,26 +95,6 @@
     <main class="content">
 
         <?=$this->fetch('content')?>
-
-        <hr class="hr-section">
-        <div class="partners">
-            <div class="container">
-                <h1>Our partners</h1>
-                <div class="list-unstyled partners-slider">
-<?
-    foreach($aBrands as $article) {
-        $this->ArticleVars->init($article, $url, $title, $teaser, $src, 'noresize');
-?>
-                        <div class="partners-element">
-                            <a href="<?=$url?>" target="_blank"><span><img class="img-responsive grayscale" src="<?=$src?>" alt="<?=$title?>"></span></a>
-                        </div>
-<?
-    }
-?>
-
-                </div>
-            </div>
-        </div>
 
     </main><!-- .content -->
 

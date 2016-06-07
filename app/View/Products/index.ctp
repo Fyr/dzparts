@@ -110,6 +110,7 @@
 	echo $this->element('paginate');
 
 	if ($relatedArticle) {
+		/*
 ?>
 			<section class="news">
 					<div class="main-news">
@@ -119,6 +120,7 @@
 					</div>
 			</section>
 <?
+		*/
 	}
 ?>
 		</div>

@@ -1,16 +1,3 @@
-<!--div class="breadcrumbs">
-	<div class="container">
-		<ul class="list-unstyled">
-			<li>
-				<a href="#">Home</a>
-				<?=$this->element('icon', array('type' => 'angle-right'))?>
-			</li>
-			<li>Spares</li>
-		</ul>
-	</div>
-</div-->
-
-
 <section class="container">
 	<?=$this->element('title', array('title' => __('Catalog')))?>
 	<div class="row catalog-parts">
@@ -58,7 +45,8 @@
 		</div>
 	</div>
 </section>
-<section class="download-catalog">
+<hr class="hr-section">
+<!--section class="download-catalog">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-7 col-md-8 col-lg-9">
@@ -76,7 +64,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section-->
 <?
 	if (Configure::read('Settings.sectionizer')) {
 		foreach($aSections2 as $section_id => $title) {
@@ -88,7 +76,7 @@
 		}
 	}
 ?>
-<div class="our-certificates">
+<!--div class="our-certificates">
 	<div class="container">
 		<h1>Our certificates</h1>
 		<div class="row">
@@ -109,13 +97,16 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div-->
+<?
+	if ($aHomePageNews) {
+?>
 <section class="news">
 	<div class="container">
 		<?=$this->element('title', array('title' => __('News of our company')))?>
 <?
-	$article = array_shift($aHomePageNews);
-	$this->ArticleVars->init($article, $url, $title, $teaser, $src, '600x');
+		$article = array_shift($aHomePageNews);
+		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '600x');
 ?>
 		<div class="row">
 			<div class="col-sm-6">
@@ -131,19 +122,19 @@
 			<div class="col-sm-6">
 				<div class="small-news">
 <?
-	foreach($aHomePageNews as $article) {
-		$this->ArticleVars->init($article, $url, $title, $teaser, $src, 'thumb300x200');
+		foreach($aHomePageNews as $article) {
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, 'thumb300x200');
 ?>
 					<div class="row small-news-item">
 						<div class="col-xs-5 col-sm-6">
 							<div class="small-news-image">
 								<a href="<?=$url?>">
 <?
-		if ($src) {
+			if ($src) {
 ?>
 									<img class="img-responsive" src="<?=$src?>" alt="<?=$title?>" />
 <?
-		}
+			}
 ?>
 									<div class="small-news-time">
 										<?=$this->ArticleVars->date($article['News']['created'])?>
@@ -156,13 +147,16 @@
 						</div>
 					</div>
 <?
-	}
+		}
 ?>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+<?
+	}
+?>
 <!--
 <?=$this->element('title', array('title' => $contentArticle['Page']['title']))?>
 <div class="block main article clearfix">

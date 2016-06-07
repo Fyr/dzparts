@@ -65,9 +65,7 @@
 		$src = $this->Media->imageUrl($brand, '400x');
 ?>
 				<div class="main-news-image">
-					<a class="fancybox" href="<?=$orig?>" rel="photoalobum">
-						<img class="img-responsive" src="<?=($src) ? $src : '/img/default_product.jpg'?>" alt="<?=$alt?>" />
-					</a>
+					<img class="img-responsive" src="<?=($src) ? $src : '/img/default_product.jpg'?>" alt="<?=$alt?>" />
 				</div>
 
 <?
@@ -91,7 +89,6 @@
 		}
 ?>
 							</div>
-							<?=$this->ArticleVars->body($article)?>
 <?
 	if ($article['PMFormData'] && $article['PMFormField']) {
 ?>

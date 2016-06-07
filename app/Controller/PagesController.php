@@ -24,6 +24,7 @@ class PagesController extends AppController {
 			'order' => array('News.featured DESC', 'News.sorting ASC', 'News.created DESC'),
 			'limit' => 4
 		));
+		$aNews = array();
 		$this->set('aHomePageNews', $aNews);
 
 		$aProducts = $this->Product->find('all', array(
