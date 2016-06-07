@@ -57,7 +57,7 @@ class AppController extends Controller {
 		$this->aNavBar = array(
 			'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
 			'news' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'News'), 'title' => __('News')),
-			'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
+			// 'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
 			// 'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),
 			// 'offer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Offer'), 'title' => __('Hot Offers')),
 			// 'brand' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Brand'), 'title' => __('Brands')),
@@ -70,7 +70,7 @@ class AppController extends Controller {
 		$this->aBottomLinks = array(
 			'home' => array('href' => array('controller' => 'Pages', 'action' => 'home'), 'title' => __('Home')),
 			'news' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'News'), 'title' => __('News')),
-			'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
+			// 'products' => array('href' => array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'), 'title' => __('Spares')),
 			// 'remont' => array('href' => array('controller' => 'Repair', 'action' => 'index'), 'title' => __('Repair')),
 			// 'offer' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Offer'), 'title' => __('Hot Offers')),
 			// 'brand' => array('href' => array('controller' => 'Articles', 'action' => 'index', 'objectType' => 'Brand'), 'title' => __('Brands')),
@@ -195,13 +195,24 @@ class AppController extends Controller {
 
 		$this->loadModel('Category');
 		// $aTypes = $this->Category->getTypesList();
-		$aCategories = $this->Category->getObjectList('Category', '', array('Category.sorting' => 'ASC'));
+		// $aCategories = $this->Category->getObjectList('Category', '', array('Category.sorting' => 'ASC'));
+		$conditions = array('category.object_type' => 'Category', 'Category.export_bg' => 1);
+		$order = array('Category.sorting' => 'ASC');
+		$aCategories = $this->Category->find('all', compact('conditions', 'order'));
+
 		$aCategories = Hash::combine($aCategories, '{n}.Category.id', '{n}');
 		$this->set('aCategories', array(0 => $aCategories));
+		$this->aNavBar = array(
+			'home' => $this->aNavBar['home'],
+			'news' => $this->aNavBar['news']
+		);
 		foreach ($aCategories as $article) {
 			$url = SiteRouter::url($article);
-			$this->aNavBar['products']['submenu'][] = array('href' => $url, 'title' => $article['Category']['title']);
+			// $this->aNavBar['products']['submenu'][] = array('href' => $url, 'title' => $article['Category']['title']);
+			$this->aNavBar[$article['Category']['slug']] = array('href' => $url, 'title' => $article['Category']['title']);
 		}
+		$this->aNavBar['about-us'] = $this->aBottomLinks['about-us'];
+		$this->aNavBar['contacts'] = $this->aBottomLinks['contacts'];
 
 		$this->loadModel('Subcategory');
 		$aSubcategories = $this->Subcategory->getObjectList('Subcategory', '', array('Subcategory.sorting' => 'ASC'));

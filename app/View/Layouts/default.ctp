@@ -115,13 +115,17 @@
                 <nav class="footer-nav">
                     <div class="row">
 <?
-    $aCols = $this->Articlevars->divideColumns($aBottomLinks, 2);
+    $aBottomCats = array();
+    foreach ($aCategories[0] as $article) {
+        $url = SiteRouter::url($article);
+        $aBottomCats[$article['Category']['slug']] = array('href' => $url, 'title' => $article['Category']['title']);
+    }
 ?>
                         <div class="col-xs-6 col-sm-3">
-                            <?=$this->element('SiteUI/bottom_links', array('aBottomLinks' => $aCols[0], 'currLink' => $currLink))?>
+                            <?=$this->element('SiteUI/bottom_links', array('aBottomLinks' => $aBottomLinks, 'currLink' => $currLink))?>
                         </div>
                         <div class="col-xs-6 col-sm-3">
-                            <?=$this->element('SiteUI/bottom_links', array('aBottomLinks' => $aCols[1], 'currLink' => $currLink))?>
+                            <?=$this->element('SiteUI/bottom_links', array('aBottomLinks' => $aBottomCats, 'currLink' => $currLink))?>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="footer-phones">
