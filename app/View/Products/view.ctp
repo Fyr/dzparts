@@ -124,7 +124,7 @@
 				$class = ($class == 'odd') ? 'even' : 'odd';
 ?>
 				<tr class="gridRow <?=$class?> td">
-					<td nowrap="nowrap" align="right"><?=$field['label']?></td>
+					<td nowrap="nowrap" align="right"><?=$field['label_bg']?></td>
 					<td><b><?=$value?></b></td>
 				</tr>
 <?

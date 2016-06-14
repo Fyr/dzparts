@@ -65,12 +65,12 @@
 
 <?
 		foreach($aArticles as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '300x250', $featured);
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, 'thumb400x250', $featured);
 			$alt = $article['Product']['code'] . ' ' . $article['Product']['title'];
 			$brand_id = $article['Product']['brand_id'];
 			if (!$src) {
 				if (isset($aBrands[$brand_id])) {
-					$src = $this->Media->imageUrl($aBrands[$brand_id], '300x250');
+					$src = $this->Media->imageUrl($aBrands[$brand_id], 'thumb400x250');
 				}
 			}
 ?>
@@ -93,13 +93,14 @@
 			$style = '';
 			if (!$src) {
 				$src = '/img/default_product100.png';
-				$style = 'style="height: 250px"';
 			}
 ?>
-								<img class="img-responsive" src="<?=$src?>" alt="<?=$title?>" <?=$style?>/>
+								<img class="img-responsive" src="<?=$src?>" alt="<?=$title?>"/>
 								<figcaption>
+									<div class="inner">
 									<?=$article['Product']['code']?><br />
 									<?=$title?>
+									</div>
 								</figcaption>
 							</figure>
 						</a>
