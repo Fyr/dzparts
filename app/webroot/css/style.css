@@ -445,7 +445,11 @@ section [class*="col-"] {
   margin-bottom: 4px;
   color: #fff;
   overflow: hidden;
-  height: 217px; }
+  height: 296px; 
+	background-size: cover;
+	background-position: center center;
+
+}
   .catalog-element:active, .catalog-element:focus {
     color: #fff; }
   .catalog-element.last img {
@@ -468,22 +472,25 @@ section [class*="col-"] {
   .catalog-element:hover {
     opacity: 0.6;
     color: #fff; }
-    .catalog-element:hover.last {
-      opacity: 1; }
+
+      .catalog-element.last:hover {
+        opacity: 0.1; }
+
+  
       .catalog-element:hover.last img {
         opacity: 0.1; }
       .catalog-element:hover.last .catalog-element-content {
         color: #749e4f; }
   @media (max-width: 1200px) {
     .catalog-element {
-      height: 179px; } }
+      height: 255px; } }
   @media (max-width: 992px) {
     .catalog-element {
-      height: 137px; } }
+      height: 209px; } }
   @media (max-width: 768px) {
     .catalog-element {
-      max-height: 100%;
-      height: auto; }
+		height: 170px;
+      }
       .catalog-element-content > span {
         padding: 25% 0;
         line-height: 20px;
@@ -549,9 +556,10 @@ section [class*="col-"] {
     .catalog-parts-element figure figcaption {
       border: 1px solid #749e4f;
       background-color: #749e4f;
+		line-height:18px;
       text-align: center;
       padding: 15px 0;
-      font-size: 23px;
+      font-size: 20px;
       color: #26550d; }
   .catalog-parts-element.last {
     border: 1px solid #000;
@@ -940,3 +948,41 @@ div.scrollableArea {
     margin-right: 6px;
     margin-left: -6px;
     float: left; }
+
+
+/*
+.imgOuter { height: 250px; text-align: center; }
+.imgOuter:before { content: ''; height: 100%; display: inline-block; vertical-align: middle; margin-left: -0.32em; }
+
+.imgThumb { display: inline-block; vertical-align: middle; max-width: 100%; }
+*/
+
+.imgHeight { display: block; max-height: 100%;  }
+
+.main-news-image { margin-bottom: 20px;}
+.noFound { padding-bottom: 80px;}
+
+ .catalog-parts-element figure figcaption:before { content: ''; height: 100%; display: inline-block; vertical-align: middle; margin-left: -0.32em; }
+ .catalog-parts-element figure figcaption { height: 60px; padding: 0;}
+.catalog-parts-element figure figcaption .inner { display: inline-block; vertical-align: middle; }
+
+
+
+@media (max-width: 992px) {
+	 .catalog-parts-element figure figcaption { font-size: 16px; }
+	.catalog-parts-element figure figcaption { height: 60px; padding: 0;}
+ }
+
+ @media (max-width: 767px) {
+	 .catalog-parts-element figure figcaption { font-size: 16px; }
+	 
+	 .catalog-parts-element figure figcaption { height: 60px; padding: 0;}
+	 .catalog-parts-element figure figcaption .inner { display: inline-block; vertical-align: middle; }
+	  
+ }
+
+@media (max-width: 390px) {
+	.catalog-parts-element figure figcaption { height: auto; padding-top: 10px; padding-bottom: 10px;}
+}
+
+ 

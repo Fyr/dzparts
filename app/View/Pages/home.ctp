@@ -15,16 +15,19 @@
 		<div class="col-xs-6 col-sm-4">
 			<a href="<?=$url?>" class="catalog-parts-element">
 				<figure>
+					
 <?
 		if ($src) {
 			echo $this->Html->image($src, array('class' => 'img-responsive', 'alt' => $title));
 		} else {
-			echo $this->Html->image('/img/default_product100.png', array('style' => 'height: 250px', 'alt' => $title));
+			echo $this->Html->image('/img/default_product100.png', array('class' => 'img-responsive', 'alt' => $title));
 		}
-?>
+?>					
 					<figcaption>
-						<?=$article['Product']['code']?><br />
-						<?=$article['Product']['title']?>
+						<div class="inner">
+							<?=$article['Product']['code']?><br />
+							<?=$article['Product']['title']?>
+						</div>
 					</figcaption>
 				</figure>
 			</a>
@@ -33,8 +36,9 @@
 	}
 ?>
 		<div class="col-xs-6 col-sm-4">
-			<a class="catalog-element last" href="<?=$this->Html->url(array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'))?>">
-				<img class="img-responsive" src="/img/temp/catalog-elements/catalog-images-last.jpg" alt="">
+			<a class="catalog-element last" href="<?=$this->Html->url(array('controller' => 'Products', 'action' => 'index', 'objectType' => 'Product'))?>" style="background-image: url('/img/temp/catalog-elements/catalog-images-last.jpg'); ">
+				
+				<!--<img class="imgHeight" src="/img/temp/catalog-elements/catalog-images-last.jpg" alt="">-->
 				<span class="catalog-element-content">
 					<span>
 						<?=__('All products')?>

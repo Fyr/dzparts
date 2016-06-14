@@ -196,7 +196,7 @@ class AppController extends Controller {
 		$this->loadModel('Category');
 		// $aTypes = $this->Category->getTypesList();
 		// $aCategories = $this->Category->getObjectList('Category', '', array('Category.sorting' => 'ASC'));
-		$conditions = array('category.object_type' => 'Category', 'Category.export_bg' => 1);
+		$conditions = array('Category.object_type' => 'Category', 'Category.export_bg' => 1);
 		$order = array('Category.sorting' => 'ASC');
 		$aCategories = $this->Category->find('all', compact('conditions', 'order'));
 

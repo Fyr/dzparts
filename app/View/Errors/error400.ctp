@@ -15,6 +15,7 @@ if (Configure::read('debug') > 0):
 endif;
  */
 ?>
+<section class="container noFound">
 <?
 echo $this->element('title', array('title' => __('Page not found')));
 ?>
@@ -25,3 +26,4 @@ echo $this->element('title', array('title' => __('Page not found')));
 		<a href="/"><?=__('Back to home page')?></a>
 	</p>
 </div>
+</section>

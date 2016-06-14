@@ -17,7 +17,7 @@
 	if ($src) {
 		echo $this->Html->image($src, array('class' => 'img-responsive', 'alt' => $title));
 	} else {
-		echo $this->Html->image('/img/default_product100.png', array('style' => 'height: 250px', 'alt' => $title));
+		echo $this->Html->image('/img/default_product100.png', array('class' => 'img-responsive', 'alt' => $title));
 	}
 ?>
 
