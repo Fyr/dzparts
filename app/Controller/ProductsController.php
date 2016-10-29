@@ -7,12 +7,13 @@ App::uses('Seo', 'Seo.Model');
 App::uses('Product', 'Model');
 App::uses('Category', 'Model');
 App::uses('Subcategory', 'Model');
+App::uses('DetailNum', 'Model');
 App::uses('SiteRouter', 'Lib/Routing');
 App::uses('PHTimeHelper', 'Core.View/Helper');
 
 class ProductsController extends AppController {
 	public $name = 'Products';
-	public $uses = array('Category', 'Subcategory', 'Product', 'Seo.Seo');
+	public $uses = array('Category', 'Subcategory', 'Product', 'Seo.Seo', 'DetailNum');
 	public $components = array('Recaptcha.Recaptcha');
 	// public $helpers = array('Media.PHMedia', 'Core.PHTime', 'Recaptcha.Recaptcha');
 	
@@ -270,9 +271,8 @@ class ProductsController extends AppController {
 	}
 
 	private function processNumber($value) {
-		$_value = str_replace(array('.', '-', ',', '/', '\\'), '', $value);
-		$this->loadModel('DetailNum');
-		$product_ids = $this->DetailNum->findDetails($this->DetailNum->stripList($value));
+		$_value = $this->DetailNum->strip($value);
+		$product_ids = $this->DetailNum->findDetails($this->DetailNum->stripList('*'.$_value.'*'), true, DetailNum::ORIG);
 		$this->paginate['conditions'][] = array('Product.id' => $product_ids);
 		$order = array();
 		foreach ($product_ids as $id) {
