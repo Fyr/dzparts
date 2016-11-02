@@ -11,24 +11,25 @@
 <?
 	echo $this->element('title', compact('title'));
 	if ($aArticles) {
-	$aCols = $this->ArticleVars->divideColumns($aArticles, 2);
+		for($i = 0; $i < count($aArticles); $i+= 2) {
+			$article = $aArticles[$i];
 ?>
 		<div class="row">
 			<div class="col-sm-6">
-<?
-	foreach($aCols[0] as $article) {
-		echo $this->element('article', compact('article'));
-	}
-?>
+				<?=$this->element('article', compact('article'))?>
 			</div>
 			<div class="col-sm-6">
 <?
-	foreach($aCols[1] as $article) {
-		echo $this->element('article', compact('article'));
-	}
+			if (isset($aArticles[$i + 1])) {
+				$article = $aArticles[$i + 1];
+				echo $this->element('article', compact('article'));
+			}
 ?>
 			</div>
 		</div>
+<?
+		}
+?>
 		<?=$this->element('paginate')?>
 <?
 	} else {

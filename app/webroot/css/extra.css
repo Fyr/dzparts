@@ -18,9 +18,18 @@ img.grayscale {
 	text-align: center;
 }
 
+.main-news {
+	margin: 0 20px 40px 0;
+}
+.main-news-image {
+	margin: 0;
+}
 .main-news-title small {
 	position: relative;
 	top: 15px;
+}
+.main-news .main-news-title a {
+	padding: 5px 0;
 }
 
 .clear {

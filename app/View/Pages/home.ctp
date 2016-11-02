@@ -8,7 +8,7 @@
 		$brand_id = $article['Product']['brand_id'];
 		if (!$src) {
 			if (isset($aBrands[$brand_id])) {
-				$src = $this->Media->imageUrl($aBrands[$brand_id], 'noresize');
+				$src = $this->Media->imageUrl($aBrands[$brand_id], 'thumb400x250');
 			}
 		}
 ?>

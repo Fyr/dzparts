@@ -52,7 +52,7 @@
                         <div class="col-sm-5">
                             <form class="header-search hidden-sm" action="<?=Router::url(array('controller' => 'products', 'action' => 'index'))?>" method="get">
                                 <label for="headerSearch" class="sr-only"></label>
-                                <input type="text" class="form-control" id="headerSearch" name="q" value="<?=$this->request->query('q')?>" placeholder="Enter spere number or its name...">
+                                <input type="text" class="form-control" id="headerSearch" name="q" value="<?=$this->request->query('q')?>" placeholder="Enter detail number or its name...">
                                 <button type="submit">
                                     <?=$this->element('icon', array('type' => 'search'))?>
                                 </button>
