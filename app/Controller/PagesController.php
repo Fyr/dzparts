@@ -7,7 +7,7 @@ App::uses('Product', 'Model');
 
 class PagesController extends AppController {
 	public $name = 'Pages';
-	public $uses = array('Page', 'News', 'Product');
+	public $uses = array('Page', 'News', 'Category', 'Product');
 	public $helpers = array('ArticleVars', 'Media.PHMedia', 'Core.PHTime', 'Media');
 
 	public function home() {
@@ -27,8 +27,13 @@ class PagesController extends AppController {
 		$aNews = array();
 		$this->set('aHomePageNews', $aNews);
 
+		$conditions = array('Category.object_type' => 'Category', 'Category.export_bg' => 1);
+		$aCategories = $this->Category->find('all', compact('conditions'));
+
+		$cat_ids = Hash::extract($aCategories, '{n}.Category.id');
+
 		$aProducts = $this->Product->find('all', array(
-			'conditions' => array('Product.published' => 1),
+			'conditions' => array('Product.published' => 1, 'Product.cat_id' => $cat_ids),
 			'order' => array('Product.featured DESC', 'Product.created DESC'),
 			'limit' => 5
 		));
