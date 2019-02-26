@@ -40,8 +40,9 @@
 
 	if (Configure::read('Settings.sectionizer')) {
 		foreach($aSections2 as $section_id => $title) {
-			foreach ($aCategories2[$section_id] as $id => $article) {
-				$url = SiteRouter::url($article, true);
+			if (isset($aCategories2[$section_id])) {
+				foreach ($aCategories2[$section_id] as $id => $article) {
+					$url = SiteRouter::url($article, true);
 ?>
 
 <url>
@@ -49,9 +50,9 @@
 	<changefreq>daily</changefreq>
 </url>
 <?
-				if (isset($aSubcategories2[$id])) {
-					foreach ($aSubcategories2[$id] as $_article) {
-						$url = SiteRouter::url($_article, true);
+					if (isset($aSubcategories2[$id])) {
+						foreach ($aSubcategories2[$id] as $_article) {
+							$url = SiteRouter::url($_article, true);
 ?>
 
 <url>
@@ -59,6 +60,7 @@
 <changefreq>daily</changefreq>
 </url>
 <?
+						}
 					}
 				}
 			}

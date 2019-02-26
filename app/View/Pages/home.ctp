@@ -72,11 +72,13 @@
 <?
 	if (Configure::read('Settings.sectionizer')) {
 		foreach($aSections2 as $section_id => $title) {
-			echo $this->element('categories', array(
-				'title' => $title,
-				'aCategories' => $aCategories2[$section_id],
-				'aSubcategories' => $aSubcategories2
-			));
+			if (isset($aCategories2[$section_id])) {
+				echo $this->element('categories', array(
+					'title' => $title,
+					'aCategories' => $aCategories2[$section_id],
+					'aSubcategories' => $aSubcategories2
+				));
+			}
 		}
 	}
 ?>

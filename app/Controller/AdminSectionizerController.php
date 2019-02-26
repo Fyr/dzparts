@@ -13,7 +13,7 @@ class AdminSectionizerController extends AdminController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->currMenu = 'Sectionizer';
+		$this->currMenu = 'SectionArticle';
 		$this->set('aCategoryOptions', $this->Section->getOptions());
 		$this->set('aSubcategoryOptions', $this->SectionArticle->getOptions());
 	}
